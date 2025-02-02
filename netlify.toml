@@ -1,0 +1,8 @@
+[functions]
+    directory = "./src/handlers"
+
+[[redirects]]
+    from = "/*"
+    to = "/.netlify/functions/to-webp/:splat"
+    status = 200
+    force = true
