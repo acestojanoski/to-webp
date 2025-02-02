@@ -1,7 +1,7 @@
 [functions]
     directory = "./src/handlers"
     node_bundler = "esbuild"
-    external_node_modules = ["zod"]
+    external_node_modules = ["sharp", "zod"]
 
 [[redirects]]
     from = "/*"

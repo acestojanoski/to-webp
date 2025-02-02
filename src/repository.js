@@ -1,22 +1,22 @@
-import ky, { HTTPError } from "ky";
+import ky, {HTTPError} from 'ky';
 
 /**
  * @param {string} url
  */
 const fetchImage = async (url) => {
-  try {
-    return await ky.get(url).arrayBuffer();
-  } catch (error) {
-    if (error instanceof HTTPError && error.response?.status === 404) {
-      return null;
-    }
+	try {
+		return await ky.get(url).arrayBuffer();
+	} catch (error) {
+		if (error instanceof HTTPError && error.response?.status === 404) {
+			return null;
+		}
 
-    throw error;
-  }
+		throw error;
+	}
 };
 
 const repository = {
-  fetchImage,
+	fetchImage,
 };
 
 export default repository;

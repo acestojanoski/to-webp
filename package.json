@@ -1,19 +1,31 @@
 {
-  "name": "to-webp",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "scripts": {},
-  "keywords": [],
-  "author": {
-    "name": "Aleksandar Stojanoski",
-    "url": "https://github.com/acestojanoski"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@netlify/functions": "^3.0.0",
-    "ky": "^1.7.4",
-    "sharp": "^0.33.5",
-    "zod": "^3.24.1"
-  }
+	"name": "to-webp",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"scripts": {
+		"lint": "xo"
+	},
+	"keywords": [
+		"sharp",
+		"webp",
+		"service",
+		"microservice",
+		"image",
+		"convert"
+	],
+	"author": {
+		"name": "Aleksandar Stojanoski",
+		"url": "https://github.com/acestojanoski"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"@netlify/functions": "^3.0.0",
+		"ky": "^1.7.4",
+		"sharp": "^0.33.5",
+		"zod": "^3.24.1"
+	},
+	"devDependencies": {
+		"xo": "^0.60.0"
+	}
 }

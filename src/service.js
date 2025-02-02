@@ -1,6 +1,6 @@
-import sharp from "sharp";
-import repository from "./repository";
-import ServiceError from "./ServiceError";
+import sharp from 'sharp';
+import repository from './repository.js';
+import ServiceError from './service-error.js';
 
 /**
  * @typedef {Object} Options
@@ -19,68 +19,68 @@ import ServiceError from "./ServiceError";
  * @param {Options} options
  */
 const process = async (options) => {
-  const {
-    url,
-    quality,
-    lossless,
-    nearLossless,
-    width,
-    height,
-    fit,
-    position,
-    background,
-  } = options;
+	const {
+		url,
+		quality,
+		lossless,
+		nearLossless,
+		width,
+		height,
+		fit,
+		position,
+		background,
+	} = options;
 
-  const image = await repository.fetchImage(url);
+	const image = await repository.fetchImage(url);
 
-  if (!image) {
-    throw new ServiceError(404, "Image not found.");
-  }
+	if (!image) {
+		throw new ServiceError(404, 'Image not found.');
+	}
 
-  let imageProcessor = sharp(image).webp({
-    lossless,
-    nearLossless,
-    quality: quality || 75,
-  });
+	let imageProcessor = sharp(image).webp({
+		lossless,
+		nearLossless,
+		quality: quality || 75,
+	});
 
-  /** @type {import("sharp").ResizeOptions} */
-  const resizeOptions = {};
+	/** @type {import("sharp").ResizeOptions} */
+	const resizeOptions = {};
 
-  if (width) {
-    resizeOptions.width = width;
-  }
+	if (width) {
+		resizeOptions.width = width;
+	}
 
-  if (height) {
-    resizeOptions.height = height;
-  }
+	if (height) {
+		resizeOptions.height = height;
+	}
 
-  if (position) {
-    resizeOptions.position = position;
-  }
+	if (position) {
+		resizeOptions.position = position;
+	}
 
-  if (fit) {
-    resizeOptions.fit = fit;
-  }
+	if (fit) {
+		resizeOptions.fit = fit;
+	}
 
-  if (background) {
-    resizeOptions.background = background;
-  }
+	if (background) {
+		resizeOptions.background = background;
+	}
 
-  if (
-    resizeOptions.width ||
-    resizeOptions.height ||
-    resizeOptions.position ||
-    resizeOptions.fit ||
-    resizeOptions.background
-  ) {
-    imageProcessor = imageProcessor.resize(resizeOptions);
-  }
+	if (
+		resizeOptions.width ||
+		resizeOptions.height ||
+		resizeOptions.position ||
+		resizeOptions.fit ||
+		resizeOptions.background
+	) {
+		imageProcessor = imageProcessor.resize(resizeOptions);
+	}
 
-  return imageProcessor.toBuffer();
+	return imageProcessor.toBuffer();
 };
 
 const service = {
-  process,
+	process,
 };
 
 export default service;

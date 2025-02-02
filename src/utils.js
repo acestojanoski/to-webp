@@ -3,20 +3,20 @@
  * @param {number} [fallback]
  */
 export const enhancedParseInt = (value, fallback) => {
-  if (value === undefined || value === null) {
-    return fallback;
-  }
+	if (value === undefined || value === null) {
+		return fallback;
+	}
 
-  const parsedValue = Number.parseInt(value);
+	const parsedValue = Number.parseInt(value, 10);
 
-  if (Number.isNaN(parsedValue)) {
-    return fallback;
-  }
+	if (Number.isNaN(parsedValue)) {
+		return fallback;
+	}
 
-  return parsedValue;
+	return parsedValue;
 };
 
 /**
  * @param {any} value
  */
-export const stringToBoolean = (value) => value === "true";
+export const stringToBoolean = (value) => value === 'true';
