@@ -1,4 +1,6 @@
-class ServiceError extends Error {
+export class ServiceError extends Error {
+	name = 'ServiceError';
+
 	/**
 	 *
 	 * @param {number} statusCode
@@ -6,10 +8,10 @@ class ServiceError extends Error {
 	 */
 	constructor(statusCode, message) {
 		super(message);
-
-		this.name = 'ServiceError';
 		this.statusCode = statusCode;
 	}
-}
 
-export default ServiceError;
+	static isServiceError(error) {
+		return error instanceof ServiceError;
+	}
+}

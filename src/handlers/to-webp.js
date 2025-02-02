@@ -1,6 +1,6 @@
 import {z, ZodError} from 'zod';
 import service from '../service.js';
-import ServiceError from '../service-error.js';
+import {ServiceError} from '../service-error.js';
 
 const validationSchema = z.object({
 	url: z.string().url(),
@@ -59,7 +59,7 @@ export async function handler(event, _context) {
 			'content-type': 'application/json',
 		};
 
-		if (error instanceof ServiceError) {
+		if (ServiceError.isServiceError(error)) {
 			return {
 				headers,
 				statusCode: error.statusCode,
