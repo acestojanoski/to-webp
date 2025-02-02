@@ -1,5 +1,6 @@
 [functions]
     directory = "./src/handlers"
+    external_node_moudles = ["zod"]
 
 [[redirects]]
     from = "/*"
